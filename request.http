@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:8091
+
+
+POST {{baseUrl}}/api/proposal
+Content-Type: application/json
+
+{
+    "customer": "Teste 01",
+    "priceTonne": 125.25,
+    "tonnes": 80,
+    "country": "EUA",
+    "proposalValidityDays": 3
+}
+
+###
+GET {{baseUrl}}/api/proposal
