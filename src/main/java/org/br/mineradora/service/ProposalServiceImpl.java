@@ -8,9 +8,11 @@ import org.br.mineradora.entity.ProposalEntity;
 import org.br.mineradora.message.KafkaEvent;
 import org.br.mineradora.repository.ProposalRepository;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
+@ApplicationScoped
 public class ProposalServiceImpl implements ProposalService {
 
     @Inject
@@ -35,13 +37,14 @@ public class ProposalServiceImpl implements ProposalService {
 
     }
 
+    @Override
     @Transactional
     public void createNewProposal(ProposalDetailDTO proposalDetailDTO) {
         ProposalDTO proposal = buildAndSaveNewProposal(proposalDetailDTO);
         kafkaMessages.sendNewKafkaEvent(proposal);
     }
 
-    @Transactional
+    //@Transactional
     private ProposalDTO buildAndSaveNewProposal(ProposalDetailDTO proposalDetailDTO) {
 
         try {
@@ -60,6 +63,7 @@ public class ProposalServiceImpl implements ProposalService {
                 .proposalId(proposalRepository.findByCustomer(proposal.getCustomer()).get().getId())
                 .priceTonne(proposal.getPriceTonne())
                 .customer(proposal.getCustomer()).build();
+
         } catch (Exception e){
             e.printStackTrace();
             throw new RuntimeException();
