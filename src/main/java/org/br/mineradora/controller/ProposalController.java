@@ -34,8 +34,9 @@ public class ProposalController {
         LOG.info("-- Recebendo Proposta de Compra --");
 
         try{
-            proposalService.createNewProposal(proposalDetails);
-            return Response.ok().build();
+           var proposal =  proposalService.createNewProposal(proposalDetails);
+            return Response.ok().entity(proposal)
+            .build();
         } catch(Exception e){
 
             return Response.serverError().build();

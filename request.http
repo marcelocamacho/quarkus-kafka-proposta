@@ -1,16 +1,21 @@
 @baseUrl = http://localhost:8091
 
 
+# @name proposalResp
 POST {{baseUrl}}/api/proposal
 Content-Type: application/json
 
 {
-    "customer": "Teste 01",
+    "customer": "Teste 03",
     "priceTonne": 125.25,
     "tonnes": 80,
     "country": "EUA",
     "proposalValidityDays": 3
 }
 
+@proposalId = {{proposalResp.response.body.$.proposalId}}
 ###
-GET {{baseUrl}}/api/proposal
+GET {{baseUrl}}/api/proposal/{{proposalId}}
+
+###
+
