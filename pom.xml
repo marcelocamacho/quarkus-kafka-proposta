@@ -38,6 +38,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.quarkiverse.opentracing</groupId>
+            <artifactId>quarkus-smallrye-opentracing</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive</artifactId>
         </dependency>

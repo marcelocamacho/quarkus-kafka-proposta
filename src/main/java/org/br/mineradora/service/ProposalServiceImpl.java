@@ -7,12 +7,14 @@ import org.br.mineradora.dto.ProposalDetailDTO;
 import org.br.mineradora.entity.ProposalEntity;
 import org.br.mineradora.message.KafkaEvent;
 import org.br.mineradora.repository.ProposalRepository;
+import org.eclipse.microprofile.opentracing.Traced;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
+@Traced
 public class ProposalServiceImpl implements ProposalService {
 
     @Inject
